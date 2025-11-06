@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opportunities</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.extras.css">
+</head>
+<body>
+  <div class="topbar">
+    <span>Opportunities</span>
+    <a href="feed.html"><button>Feed</button></a>
+    <a href="profile.html"><button>Profile</button></a>
+  </div>
+  <div class="container">
+    <h2>Post a Job</h2>
+    <input id="j_title" placeholder="Title">
+    <input id="j_company" placeholder="Company">
+    <input id="j_location" placeholder="Location">
+    <input id="j_skills" placeholder="Skills (comma separated)">
+    <textarea id="j_desc" placeholder="Job description"></textarea>
+    <button onclick="postJob()">Post Job</button>
+
+    <h2>Open Roles</h2>
+    <div class="filters">
+      <input id="jobFilter" placeholder="Filter by skill">
+      <button onclick="loadJobs()">Filter</button>
+    </div>
+    <div id="jobsList" class="grid"></div>
+  </div>
+  <script src="app_extras.js"></script>
+</body>
+</html>

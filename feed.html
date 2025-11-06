@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feed | LinkedIn Clone</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <span id="username"></span>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <div class="container">
+    <textarea id="postContent" placeholder="Write a post..."></textarea>
+    <button onclick="createPost()">Post</button>
+  </div>
+
+  <div id="feed"></div>
+
+  <div class="container">
+  <textarea id="postContent" placeholder="Write something..."></textarea>
+  <input type="file" id="imageInput" accept="image/*">
+  <button onclick="createPost()">Post</button>
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

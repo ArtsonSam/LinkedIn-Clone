@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recruiter Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.extras.css">
+</head>
+<body>
+  <div class="topbar">
+    <span>Recruiter Mode</span>
+    <a href="feed.html"><button>Back to Feed</button></a>
+  </div>
+  <div class="container">
+    <h2>Talent Directory</h2>
+    <div class="filters">
+      <input id="searchSkill" placeholder="Filter by skill (React, Python...)">
+      <button onclick="loadDirectory()">Search</button>
+    </div>
+    <div id="directory" class="grid"></div>
+  </div>
+  <script src="app_extras.js"></script>
+</body>
+</html>

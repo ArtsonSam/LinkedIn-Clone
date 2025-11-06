@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile & Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.extras.css">
+</head>
+<body>
+  <div class="topbar">
+    <span id="username"></span>
+    <div>
+      <button id="toggleTheme">🌙</button>
+      <a href="feed.html"><button>Feed</button></a>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Profile</h2>
+    <div class="tabs">
+      <button class="tab active" data-tab="portfolio">Portfolio</button>
+      <button class="tab" data-tab="skills">Skills</button>
+      <button class="tab" data-tab="resume">Resume</button>
+      <button class="tab" data-tab="video">Video Intro</button>
+      <button class="tab" data-tab="feedback">Recruiter Feedback</button>
+    </div>
+
+    <!-- Portfolio -->
+    <section id="tab-portfolio" class="tab-pane active">
+      <h3>Add Portfolio Item</h3>
+      <input id="p_title" placeholder="Project/Certificate Title">
+      <input id="p_link" placeholder="GitHub/Live Link (optional)">
+      <input id="p_tag" placeholder="Tag (React, Python, ML...)">
+      <textarea id="p_desc" placeholder="Short description"></textarea>
+      <input type="file" id="p_image" accept="image/*">
+      <button onclick="addPortfolio()">Add</button>
+
+      <div class="filters">
+        <input id="filterTag" placeholder="Filter by tag (e.g., React)">
+        <button onclick="loadPortfolio()">Filter</button>
+      </div>
+
+      <div id="portfolioList" class="grid"></div>
+    </section>
+
+    <!-- Skills -->
+    <section id="tab-skills" class="tab-pane">
+      <h3>Skills & Endorsements</h3>
+      <div class="row">
+        <input id="skillName" placeholder="Add a skill e.g., React">
+        <button onclick="addSkill()">Add Skill</button>
+      </div>
+      <div id="skillsList" class="chips"></div>
+    </section>
+
+    <!-- Resume -->
+    <section id="tab-resume" class="tab-pane">
+      <h3>Smart Resume</h3>
+      <p>Generate a polished resume PDF from your profile data.</p>
+      <button onclick="generateResume()">📄 Generate Resume</button>
+    </section>
+
+    <!-- Video -->
+    <section id="tab-video" class="tab-pane">
+      <h3>30-sec Video Intro</h3>
+      <input type="file" id="videoFile" accept="video/mp4,video/webm">
+      <button onclick="uploadVideo()">Upload</button>
+      <div id="videoArea"></div>
+    </section>
+
+    <!-- Feedback -->
+    <section id="tab-feedback" class="tab-pane">
+      <h3>Anonymous Recruiter Feedback</h3>
+      <div class="row">
+        <input id="fbName" placeholder="Your name (optional)">
+        <input id="fbMessage" placeholder="Leave constructive feedback...">
+        <button onclick="sendFeedback()">Send</button>
+      </div>
+      <div id="feedbackList"></div>
+    </section>
+  </div>
+
+  <script src="app_extras.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Resume Reviewer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.extras.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at center, #0a0f1f, #000);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h2 {
+      font-weight: 500;
+      color: #00e5ff;
+      margin-bottom: 40px;
+    }
+
+    input[type="file"] {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid #00e5ff;
+      color: #00e5ff;
+      border-radius: 8px;
+      padding: 12px;
+      width: 260px;
+      outline: none;
+    }
+
+    /* ✅ Beautifully adjusted Analyze button */
+    button {
+      display: inline-block;
+      margin-top: 25px;
+      background: linear-gradient(90deg, #0073b1, #00bcd4);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 22px; /* reduced horizontal padding */
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.25s ease;
+      box-shadow: 0 0 10px rgba(0,188,212,0.4);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(0,188,212,0.7);
+      background: linear-gradient(90deg, #00bcd4, #0073b1);
+    }
+
+    #decision {
+      display: none;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #00e5ff;
+      margin-top: 70px; /* gap between file area and result */
+      text-transform: uppercase;
+      animation: pulseGlow 1.8s infinite;
+      letter-spacing: 2px;
+    }
+
+    @keyframes pulseGlow {
+      0% { opacity: 0.3; text-shadow: 0 0 10px #00e5ff; }
+      50% { opacity: 1; text-shadow: 0 0 25px #00e5ff, 0 0 50px #00bcd4; }
+      100% { opacity: 0.3; text-shadow: 0 0 10px #00e5ff; }
+    }
+
+    #score {
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin-top: 60px;
+    }
+
+    .result {
+      font-size: 1.5rem;
+      margin-top: 25px;
+      font-weight: 500;
+    }
+
+    .good { color: #00e676; }
+    .average { color: #ffb300; }
+    .poor { color: #ff5252; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <span>AI Resume Reviewer</span>
+    <a href="profile.html"><button>Back to Profile</button></a>
+  </div>
+
+  <h2>Upload Your Resume for Review</h2>
+
+  <div class="review-container">
+    <input type="file" id="resumeFile" accept=".pdf,.txt,.doc,.docx">
+    <br>
+    <button onclick="analyzeResume()">Analyze Resume</button>
+
+    <div id="decision">Decision Pending...</div>
+    <div id="score"></div>
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    function analyzeResume() {
+      const fileInput = document.getElementById('resumeFile');
+      if (!fileInput.files.length) {
+        alert("Please upload your resume before analysis!");
+        return;
+      }
+
+      const decision = document.getElementById('decision');
+      const scoreDiv = document.getElementById('score');
+      const resultDiv = document.getElementById('result');
+
+      // Hide filename after selection
+      fileInput.value = "";
+
+      // Reset visuals
+      decision.style.display = 'block';
+      scoreDiv.textContent = '';
+      resultDiv.textContent = '';
+      resultDiv.className = 'result';
+
+      // Show suspense for 5 seconds
+      setTimeout(() => {
+        decision.style.display = 'none';
+        const score = Math.floor(Math.random() * 71) + 30; // 30–100
+
+        scoreDiv.textContent = `AI Confidence Score: ${score}%`;
+
+        if (score < 50) {
+          resultDiv.textContent = "Beautifully Go Outside. Because of Low Chance!! 😅";
+          resultDiv.classList.add("poor");
+        } else if (score < 80) {
+          resultDiv.textContent = "Little Chance, You want to improve your Resume Buddy! 🛠️";
+          resultDiv.classList.add("average");
+        } else {
+          resultDiv.textContent = "Hurray, You are on the top! 🚀🔥";
+          resultDiv.classList.add("good");
+        }
+      }, 5000); // suspense delay
+    }
+  </script>
+</body>
+</html>
